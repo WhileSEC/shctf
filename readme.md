@@ -13,4 +13,4 @@ Documentation per-problem for the [Space Heroes CTF](https://spaceheroes.ctfd.io
 - [@0xZuk0](https://github.com/0xZuk0)
 - [@p4nth3r-5237](https://github.com/p4nth3r-5237)
 
-<p align="right"><sub>(Banner credit to <a href="https://unsplash.com/photos/f5pTwLHCsAg">ngeshlew</a> on Unsplash)</sub></p>
+<p align="right"><sub>(Banner credit to <a href="http://7-themes.com/collections/space-wallpapers/">7-themes</a>)</sub></p>
