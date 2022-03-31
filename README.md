@@ -1,4 +1,4 @@
-![banner](https://cdn.discordapp.com/attachments/834635214672232462/949924687557824582/pico-banner.jpg)
+![banner](https://cdn.discordapp.com/attachments/952691296852652212/958982735916044298/banner.jpg)
 ***
 Documentation per-problem for the [Space Heroes CTF](https://spaceheroes.ctfd.io/) competition. This repository has separated them by categories, which include:
 - **webex**: Exploiting vulnerabilities in web applications
