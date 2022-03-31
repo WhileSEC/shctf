@@ -1,12 +1,12 @@
 ![banner](https://cdn.discordapp.com/attachments/952691296852652212/958982735916044298/banner.jpg)
 ***
 Documentation per-problem for the [Space Heroes CTF](https://spaceheroes.ctfd.io/) competition. This repository has separated them by categories, which include:
-- **webex**: Exploiting vulnerabilities in web applications
 - **crypto**: Identifying and decrypting ciphertext
-- **reverse**: Understanding and manipulating the functionality of a program
-- **rorensics**: Analysis and/or recovery or corrupted/deleted data
-- **pwn**: Exploiting vulnerabilities in executable programs
+- **forensics**: Analysis and/or recovery or corrupted/deleted data
 - **misc**: Everyday cybersecurity techniques
+- **pwn**: Exploiting vulnerabilities in executable programs
+- **reverse**: Understanding and manipulating the functionality of a program
+- **webex**: Exploiting vulnerabilities in web applications
 
 ### Contact
 - [@jktrn](https://github.com/jktrn)
