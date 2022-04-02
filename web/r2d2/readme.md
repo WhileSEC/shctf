@@ -27,4 +27,5 @@ We see that the image on the website is named `robots.jpeg`. What happens if we 
 $ curl http://173.230.138.139/robots.txt
 shctf{________}
 ```
+Hmmm... that challenge was pretty guessy. Let us know if you had a more elegant solution!
 </details>
