@@ -1,10 +1,10 @@
-## rd2
+## r2d2
 
-![challenge name](../../img/r2d2.png "challenge name")
+![challenge name](../../.img/r2d2.png "challenge name")<br>
 this is the basic challenge in a web category
 there is a image whose name is robots.jpeg by looking the source code i got that there will be /robots.txt
 
-![challenge source code](../../img/r2d2-src.png "challenge source code")
+![challenge source code](../../.img/r2d2-src.png "challenge source code")
 
 visited finally got the flag
 ```
