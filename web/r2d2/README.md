@@ -1,25 +1,30 @@
-# shctf: r2d2
+# Space Heroes CTF: R2D2
 ### Description
 
-We wouldn't miss the opportunity to make this dad joke.
+> We wouldn't miss the opportunity to make this dad joke. \
+http://173.230.138.139/ \
+https://spaceheroes-web-r2d2.chals.io
 
-![challenge name](../../.img/r2d2.png "challenge name")<br>
+**Author:** v10l3nt
 
 <details closed>
 <summary>Solution</summary>
   
   
-### Flag
-```
-shctf{th1s-aster0id-1$-n0t-3ntir3ly-stable}
-```
 ### Detailed Solution
 
-this is the basic challenge in a web category
-there is a image whose name is robots.jpeg by looking the source code i got that there will be /robots.txt
+Let's take a look at the source code with `F12`.
 
-![challenge source code](../../.img/r2d2-src.png "challenge source code")
-
-finally visited to /robots.txt path and got the flag.
-
+```html
+<html>
+<h1>Roger, Roger</h1>
+<img src="/static/images/robots.jpeg" />
+<h4>No, you are the one who is useless.</h4>
+</html>
+```
+We see that the image on the website is named `robots.jpeg`. What happens if we visit `robots.txt`? 🤔
+```sh
+$ curl http://173.230.138.139/robots.txt
+shctf{________}
+```
 </details>
