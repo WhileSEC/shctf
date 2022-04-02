@@ -3,7 +3,7 @@
 
 
 <details closed>
-<summary>ADD SOLUTION HERE</summary>
+<summary>Solution</summary>
   
   
 ### Flag
