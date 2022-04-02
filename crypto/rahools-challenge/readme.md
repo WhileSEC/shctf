@@ -74,7 +74,8 @@ Enter the answer with no spaces and all upper case:
   Before moving on, we need to figure out what the h-e-double-hockey-sticks a Vigenère is.
   
   A Vigenère cipher is a type of encryption that uses both plaintext and a **key**. There are many ways to use this encryption method, but the most common is via **addition** and **table/tabula recta**. 
-  To encrypt using addition, take the the position in the alphabet of the first letter in the plaintext (make sure it starts at 0, i.e. A = 0, B = 1, C = 2) and add it with the position of your key (if the key was "key", the position would be 11). **Then**, take the **modulo** 26 (divide by 26 to get the remainder, symbol `%`), as some numbers add up to greater than 26.
+  
+  To encrypt using addition, take the the position in the alphabet of the first letter in the plaintext (make sure it starts at 0, i.e. A = 0, B = 1, C = 2) and add it with the position of your key (if the key was "key", the position would be 11). Then, take the **modulo** 26 (divide by 26 to get the remainder, symbol `%`), as some numbers add up to greater than 26.
   ```
   Plaintext: hello
   Key: key
@@ -83,6 +84,7 @@ Enter the answer with no spaces and all upper case:
   l (11) + y (24) = j (35 % 26 = 09)
   l (11) + k (10) = v (21 % 26 = 21)
   o (14) + e (04) = s (18 % 26 = 18)
+  Ciphertext: rijvs
   ```
   In a formula, where A is the plaintext's alphabetic position and B is the key's alphabetic position, in that would be:
   ```
