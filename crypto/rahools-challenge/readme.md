@@ -1,8 +1,10 @@
 
 # Space Heroes CTF: Rahool's Challenge
 ### Description
-`nc 0.cloud.chals.io 10294` \
-**Author**: excaligator
+`nc 0.cloud.chals.io 10294`
+
+**Author**: excaligator \
+**Writeup**: jktrn/enscribe
 
 <details closed>
 <summary>Solution</summary>
@@ -66,10 +68,9 @@ TEQSGH PWDFX RXKR UNZ P RC B LJJI KOJ VDXXFX MXXRU GAIVB
 We've found ourselves an encrypted engram - Can you break the (new and improved) indecipherable cipher?
 Message:A + Key:B = 0 + B = O
 Enter the answer with no spaces and all upper case:
-
   ```
   ### "Reconnaissance"
-  For themed CTFs, I find it really fun to figure out the cultural references in the challenge before solving them. In this case, `Rahool` is a vendor in the *Destiny 2* Tower that can decrypt engrams for you. Uncoincidentally, hat's what we'll be doing here.
+  For themed CTFs, I find it really fun to figure out the cultural references in the challenge before solving them. In this case, `Rahool` is a vendor in the *Destiny 2* Tower that can decrypt legendary engrams (purple) and sell exotic engrams (gold). Uncoincidentally, hat's what we'll be doing here.
   
   ### Actual Reconnaissance
   Immediately, we can tell that the ciphertext underneath the giant Rahool ASCII is substitution. This means that the plaintext is simply substituted by a value determined by the algorithm. Throwing it into this [cipher identifier](https://www.boxentriq.com/code-breaking/cipher-identifier), we find that it is a **Vigenère** cipher.
@@ -106,8 +107,76 @@ Each of the 26 rows contains the same alphabet, except shifted to the left by on
 
 If I wanted to encrypt `HELLO` with `WORLD` as the key, I would find the cell that intersects with column `H` and row `W`. In that case, it would be `D`. Then, I would find the cell that intersects with column `E` and row `O`. In that case, it would be `S`. Rinse and repeat for the entire phrase.
 
-### Decryption and  Confusion
+### Cheaters Never Win...
 
-  Let's decrypt this using [DCode](https://www.dcode.fr/vigenere-cipher), which can keylessly decrypt substitution ciphers.  
+  But how are we supposed to decrypt vigenere without a key? Let's do some "OSINT" and Google the crap out of it. [DCode](https://www.dcode.fr/vigenere-cipher), which can keylessly decrypt substitution ciphers, is the first option. Click, clack, `Ctrl + Shift + C`, `Ctrl + V` later and we have solved it!!1!1!
+  
+  <p align="center">
+    <img src="https://github.com/WhileSEC/shctf/blob/main/.img/rahool-dcode.PNG"/>
+  </p>
 
+Or not. Wait... the plaintext is telling me to replace my `E` with a `3` and my `O` with an `0`. Those aren't in `RKBGVP`. What's going on? Is the website wrong?
+
+### Or Do They?
+
+Let's go back to the drawing board and look at the problem again.
+> We've found ourselves an encrypted engram - Can you break the **(new and improved)** indecipherable cipher? \
+> Message:A + Key:B = 0 + B = O
+
+Since this cipher is "new and improved", we can assume it's not just your normal Vigenère. However, the `A + B = O` is the biggest giveaway of what we are meant to do for this challenge. 
+
+**Take it literally. The letter A (plaintext) plus the letter B (key) is equal to the letter O (ciphertext).**
+
+I solved this challenge via **known-plaintext-attack**. Yeah, it sounds fancy. But here's what I actually did:
+
+  <p align="center">
+    <img src="https://github.com/WhileSEC/shctf/blob/main/.img/rahool-vigenere.PNG"/>
+  </p>
+  
+  This is a tabula recta with a modified offset. You see how intersecting column A and row B would return O?
+  
+  Since we know our plaintext, we can use this table "backwards" to find the key. If you go down the column of your letter and find its equivalent ciphertext letter, it would be on the same row as the key for that letter!
+  
+  For example, if `C` is our plaintext and `Q` is our ciphertext, the key would be `B`. 
+  
+  Let's follow this process for the actual plaintext/ciphertext:
+```
+Ciphertext: ESDK EDS NFIMNGDJTB XEZVZ OWV KOYRTI KT ZCT BOZ CDIY DIK Z PJ K UNMTV DIK J PJ K AKMD NSUN OWV GPXY 
+TEQSGH PWDFX RXKR UNZ P RC B LJJI KOJ VDXXFX MXXRU GAIVB
+Plaintext: NICE JOB DECRYPTING INPUT THE ANSWER AS THE KEY WITH THE E AS A THREE THE O AS A ZERO WITH THE WORD
+ENGRAM AFTER WITH THE A AS A FOUR AND AOGNER RIGHT AFTER
+```
+```
+E + N -> E
+S + I -> X
+D + C -> O
+K + E -> T
+E + J -> I
+D + O -> C
+S + B -> E
+N + D -> X
+F + E -> O
+I + C -> T
+M + R -> I
+N + Y -> C
+G + P -> E
+...
+```
+The key is `EXOTIC`, as in how Master Rahool sells exotic engrams. Very funny.
+We can now follow the instructions in the plantext and send it to the server with Python and `pwntools`:
+```py
+from pwn import *
+
+p = remote("0.cloud.chals.io", 10294)
+p.sendline("3X0TICENGR4MAOGNER")
+log.success(p.recvallS())
+p.close()
+```
+Sending the string:
+```
+$ python3 exp.py
+...
+[+] Excellent work, you'll be a cryptarch yet. Here's your flag: shctf{c0Me_baCk_s0on_w3_n33d_the_chAll3nge}
+```
+We just solved `Rahool's Challenge` without needing to write any algorithms!
 </details>
