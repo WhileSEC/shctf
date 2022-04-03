@@ -67,7 +67,7 @@ Message:A + Key:B = 0 + B = O
 Enter the answer with no spaces and all upper case:
 
   ```
-  For themed CTFs, I find it really fun to figure out the cultural references in the challenge before solving them. In this case, `Rahool` is a vendor in the *Destiny 2* Tower that can decrypt engrams for you. That's what we'll be doing here.
+  For themed CTFs, I find it really fun to figure out the cultural references in the challenge before solving them. In this case, `Rahool` is a vendor in the *Destiny 2* Tower that can decrypt engrams for you. Uncoincidentally, hat's what we'll be doing here.
   
   Immediately, we can tell that the ciphertext underneath the giant Rahool ASCII is substitution. This means that the plaintext is simply substituted by a value determined by the algorithm. Throwing it into this [cipher identifier](https://www.boxentriq.com/code-breaking/cipher-identifier), we find that it is a **Vigenère** cipher.
   
@@ -91,6 +91,12 @@ Enter the answer with no spaces and all upper case:
   C = (A + B) % 26
   ```
   
-  Let's decrypt this using [DCode](https://www.dcode.fr/vigenere-cipher), which can usually decrypt ciphertext without keys using 
+  It'll be a more manual process for encrypting via table/tabula recta. Let's check out what it looks like:
+  
+  <p align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Vigen%C3%A8re_square_shading.svg/1024px-Vigen%C3%A8re_square_shading.svg.png" width="420"/>
+  </p>
+  
+  Let's decrypt this using [DCode](https://www.dcode.fr/vigenere-cipher), which can usually keylessly decrypt 
 
 </details>
