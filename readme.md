@@ -11,10 +11,6 @@ Discord: https://discord.gg/wvuvDUjAeg
 
 
 ## Challenges
-
-### survey
-
-* [survey](challenges/survey/survey/)
 ### forensics
 
 * [Space Captain Garfield](challenges/forensics/space-captain-garfield/) <em>(Easy)</em>
