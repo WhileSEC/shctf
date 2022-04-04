@@ -1,14 +1,11 @@
-# Space Heroes CTF: Rahool's Challenge
+# Rahool's Challenge
 ### Description
 `nc 0.cloud.chals.io 10294`
 
 **Author**: excaligator \
 **Writeup**: jktrn/enscribe
 
-<details closed>
-<summary>Solution</summary>
-
-  ### Detailed Solution
+### Detailed Solution
   Let's open that `netcat` link to see what's going on:
   ```
 root@kali:/home/kali/shctf# nc 0.cloud.chals.io 10294
@@ -111,7 +108,7 @@ If I wanted to encrypt `HELLO` with `WORLD` as the key, I would find the cell th
   But how are we supposed to decrypt vigenere without a key? Let's do some "OSINT" and Google the crap out of it. [DCode](https://www.dcode.fr/vigenere-cipher), which can keylessly decrypt substitution ciphers, is the first option. Click, clack, `Ctrl + Shift + C`, `Ctrl + V` later and we have solved it!!1!1!
   
   <p align="center">
-    <img src="https://github.com/WhileSEC/shctf/blob/main/.img/rahool-dcode.PNG"/>
+    <img src="https://github.com/WhileSEC/shctf/blob/main/images/rahool-dcode.PNG"/>
   </p>
 
 Or not. Wait... the plaintext is telling me to replace my `E` with a `3` and my `O` with an `0`. Those aren't in `RKBGVP`. What's going on? Is the website wrong?
@@ -129,7 +126,7 @@ Since this cipher is "new and improved", we can assume it's not just your normal
 I solved this challenge via **known-plaintext-attack**. Yeah, it sounds fancy. But here's what I actually did:
 
   <p align="center">
-    <img src="https://github.com/WhileSEC/shctf/blob/main/.img/rahool-vigenere.PNG"/>
+    <img src="https://github.com/WhileSEC/shctf/blob/main/images/rahool-vigenere.PNG"/>
   </p>
   
   This is a tabula recta with a modified offset. You see how intersecting column A and row B would return O?
@@ -178,4 +175,3 @@ $ python3 exp.py
 [+] Excellent work, you'll be a cryptarch yet. Here's your flag: shctf{c0Me_baCk_s0on_w3_n33d_the_chAll3nge}
 ```
 We just solved `Rahool's Challenge` without needing to write any algorithms!
-</details>
