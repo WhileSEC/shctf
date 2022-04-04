@@ -1,14 +1,16 @@
-# Space Heroes CTF
+# Space Heroes CTF 🚀🌌
 
-## About
+### About
 
-[insert description here]
+Space Heroes CTF is an online jeopardy-style Capture the Flag competition hosted by the FITSEC Team From Florida Tech. Challenges at all levels of difficulty (beginner to expert) for pwn, RE, crypto, web, and forensics.
+
+**Start Time:** 2022-04-01 16:00UTC \
+**End Time:** 2022-04-03 21:00UTC
+
+Discord: https://discord.gg/wvuvDUjAeg
+
 
 ## Challenges
-
-### survey
-
-* [survey](challenges/survey/survey/)
 ### forensics
 
 * [Space Captain Garfield](challenges/forensics/space-captain-garfield/) <em>(Easy)</em>
